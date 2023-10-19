@@ -8,6 +8,10 @@ Hey there! I'm Renhe, a second-year student majoring in *Communication & New Med
 
 During such days, I'd rather cozy up in bed with a good book and let my mind wander. It's like stepping into another world where all the chores fade away. Music, to me, is like a universal remedy for whatever ails me, especially after a long and tiring day; it has a magical way of soothing my emotions. In addition, I currently serve as the stage manager for the KECD CCA. It's a role that has turned out to be more demanding than I initially imagined. Despite the exhaustion, I find immense satisfaction in immersing myself in the backstage operations and gaining a deeper insight into the drama production process.
 
+```{r,out.height= "300px",out.width="500px",echo=FALSE,eval=TRUE}
+knitr::include_graphics("/Users/haley/Desktop/renhe7.github.io/src/images/1.jpg")
+```
+
 ### Course Content
 
 [week1](https://github.com/renhe7/renhe/tree/main/Week1)
