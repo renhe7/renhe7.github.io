@@ -8,8 +8,9 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-      - Data-Story.qmd
+      - href: about.qmd
+      - href: Data-Story.qmd
+        text: Data Story
 
 format:
   html:
