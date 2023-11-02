@@ -33,3 +33,6 @@ knitr::include_graphics("/Users/haley/Desktop/renhe7.github.io/src/images/1.jpg"
 [week9](https://github.com/renhe7/renhe/tree/main/Week9)
 
 [week10](https://github.com/renhe7/renhe/tree/main/Week10)
+
+[week11](https://github.com/renhe7/renhe/tree/main/Week11)
+
