@@ -2,3 +2,99 @@
 title: "Data Story"
 ---
 
+
+```{r,echo=FALSE,eval=TRUE}
+library(tidyverse)
+homicide <- read.csv("dataset3.csv")
+head(homicide)
+```
+
+```{r,echo=FALSE,eval=TRUE}
+newdf <- homicide %>%
+  mutate(RelationshipNew = case_when(
+    Relationship == "Mother" ~ "Family",
+    Relationship == "Father" ~ "Family",
+    Relationship == "Family" ~ "Family",
+    Relationship == "Wife" ~ "Family",
+    Relationship == "Daughter" ~ "Family",
+    Relationship == "Son" ~ "Family",
+    Relationship == "Husband" ~ "Family",
+    Relationship == "In-Law" ~ "Family",
+    Relationship == "Sister" ~ "Family",
+    Relationship == "Brother" ~ "Family",
+    Relationship == "Stepdaughter" ~ "FamilyAfter",
+    Relationship == "Stepson" ~ "FamilyAfter",
+    Relationship == "Stepfather" ~ "FamilyAfter",
+    Relationship == "Girlfriend" ~ "VeryClose",
+    Relationship == "Boyfriend" ~ "VeryClose",
+    Relationship == "Boyfriend/Girlfriend" ~ "VeryClose",
+    Relationship == "Friend" ~ "VeryClose",
+    Relationship == "Ex-Wife" ~ "MarriageBefore",
+    Relationship == "Ex-Husband" ~ "MarriageBefore",
+    Relationship == "Acquaintance" ~ "Acquaintance",
+    Relationship == "Employer" ~ "Acquaintance",
+    Relationship == "Employee" ~ "Acquaintance",
+    Relationship == "Neighbor" ~ "Acquaintance",
+    Relationship == "Stranger" ~ "Stranger",
+    Relationship == "Common-Law Wife" ~ "CommonLaw",
+    Relationship == "Common-Law Husband" ~ "CommonLaw",
+  ))
+head(newdf)
+```
+
+
+```{r,echo=FALSE,eval=TRUE}
+ggplot(data = newdf, aes(x = RelationshipNew, 
+                      fill = Weapon)) +
+  geom_bar(position = "fill") + labs(x = "Relationship between victim and murders", y = "Proportion", title = "Relationship between " )
+```
+
+```{r,echo=FALSE,eval=TRUE}
+summer <- newdf %>% filter(Perpetrator.Sex == "Male") %>% select (Perpetrator.Sex, Weapon)
+head(summer)
+bar_width <- 1
+ggplot(data = summer, aes(y = Weapon)) +
+  geom_bar(width = bar_width)
+```
+
+```{r,echo=FALSE,eval=TRUE}
+winter <- newdf %>% filter(Perpetrator.Sex == "Female") %>% select (Perpetrator.Sex, Weapon)
+head(winter)
+bar_width <- 1
+ggplot(data = winter, aes(y = Weapon)) +
+  geom_bar(width = bar_width)
+```
+```{r,echo=FALSE,eval=TRUE}
+as <- newdf %>% arrange(Perpetrator.Age) 
+head(as)
+```
+
+```{r,echo=FALSE,eval=TRUE}
+ggplot(as, aes(x = Perpetrator.Age, fill = Weapon)) + geom_histogram(binwidth = 45, alpha = 0.6) +
+labs(x = "Perpetrator Age",y = "Weapon use",title = "Amounts of Lending Club loans") 
+```
+
+```{r,echo=FALSE,eval=TRUE}
+ggplot(as, aes(x = RelationshipNew, fill = Weapon)) +
+geom_density(adjust = 1, alpha = 0.5)
+```
+
+```{r,echo= FALSE,eval=TRUE}
+hell <- newdf$Weapon <- as.integer(factor(newdf$Weapon))
+summary(hell)
+typeof(hell)
+```
+
+```{r,echo=FALSE,eval=TRUE}
+library(plotly)
+library(ggplot2)
+gg <- ggplot(newdf, aes(x = Perpetrator.Age, y = hell)) +
+  geom_point()
+```
+
+```{r,echo=FALSE,eval=TRUE}
+interactive_plot <- ggplotly(gg)
+interactive_plot
+
+```
+
