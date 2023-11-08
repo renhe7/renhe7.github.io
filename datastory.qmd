@@ -4,6 +4,8 @@ title: "Data Story"
 
 
 ```{r,echo=FALSE,eval=TRUE}
+library(conflicted)
+#library(dplyr)
 library(tidyverse)
 homicide <- read.csv("dataset3.csv")
 head(homicide)
@@ -50,6 +52,7 @@ ggplot(data = newdf, aes(x = RelationshipNew,
 ```
 
 ```{r,echo=FALSE,eval=TRUE}
+conflicts_prefer(dplyr::filter)
 summer <- newdf %>% filter(Perpetrator.Sex == "Male") %>% select (Perpetrator.Sex, Weapon)
 head(summer)
 bar_width <- 1
@@ -79,7 +82,7 @@ ggplot(as, aes(x = RelationshipNew, fill = Weapon)) +
 geom_density(adjust = 1, alpha = 0.5)
 ```
 
-```{r,echo= FALSE,eval=TRUE}
+```{r,echo=FALSE,eval=TRUE}
 hell <- newdf$Weapon <- as.integer(factor(newdf$Weapon))
 summary(hell)
 typeof(hell)
