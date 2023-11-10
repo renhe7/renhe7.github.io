@@ -38,3 +38,4 @@ knitr::include_graphics("/Users/haley/Desktop/renhe7.github.io/src/images/1.jpg"
 
 [week12](https://github.com/renhe7/renhe/tree/main/Week12)
 
+[week13](https://github.com/renhe7/renhe/tree/main/Week13)
